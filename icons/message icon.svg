@@ -1,0 +1,12 @@
+<svg width="300" height="154" viewBox="0 0 300 154" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<title>message icon</title>
+<desc>Created using Figma</desc>
+<g id="Canvas" transform="translate(-2266 -534)">
+<g id="message icon">
+<use xlink:href="#path0_fill" transform="translate(2266 534)" fill="#E5E5E5"/>
+</g>
+</g>
+<defs>
+<path id="path0_fill" d="M 0 80C 0 35.8172 35.8172 0 80 0L 223 0C 265.526 0 300 34.4741 300 77C 300 119.526 265.526 154 223 154L 20 154C 8.95431 154 0 145.046 0 134L 0 80Z"/>
+</defs>
+</svg>
