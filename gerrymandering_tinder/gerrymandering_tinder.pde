@@ -5,6 +5,8 @@ boolean boolDislike = false;
 int likeTimer = millis();
 int oldLikeTimer = 0;
 void setup(){
+  Data.addDisctict("NC 12", "nc12.png");
+  Data.addDisctict("FL 20", "")
   size(1080,1920);
   background(255,255,255);
 }
