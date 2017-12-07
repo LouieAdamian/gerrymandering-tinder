@@ -63,6 +63,10 @@ void mainUI(){
 
 }
 
+<<<<<<< HEAD
+=======
+void mainUI(){
+>>>>>>> 52f3beaa46d32ff9180edb6350631639a760c891
 
 void likeDislike(PImage imageName,float x,float y, String activationKey){
   ellipseMode(CENTER);
@@ -78,6 +82,7 @@ void allChats(){
 
 }
 
+<<<<<<< HEAD
 
 void chatConcacts(String contanctName, String contactPhoto){
   
@@ -86,6 +91,10 @@ void chatConcacts(String contanctName, String contactPhoto){
 
 void chat(){
   
+=======
+void chatConcacts(){
+
+>>>>>>> 52f3beaa46d32ff9180edb6350631639a760c891
 }
 void keyPressed(){
   int keyIndex = -1;
