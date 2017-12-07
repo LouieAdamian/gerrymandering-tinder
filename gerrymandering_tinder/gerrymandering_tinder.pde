@@ -1,4 +1,8 @@
 Boolean chatInactive = true;
+boolean boolLike = false;
+boolean boolDislike = false;
+int likeTimer = millis();
+int oldLikeTimer = 0;
 void setup(){
   size(1080,1920);
   background(255,255,255);
@@ -7,6 +11,31 @@ void setup(){
 void draw(){
 mainUI();
 topUI();
+if(likeTimer-oldLikeTimer >= 500){
+    boolLike = false;
+    boolDislike = false;
+    oldLikeTimer = likeTimer;
+    
+  }
+}
+void keyPressed(){
+  int keyIndex = -1;
+  if( key == 'w'){
+    chatInactive = false;
+    allChats();
+  }
+  if(key == 'a'){
+    boolDislike = true;
+    oldLikeTimer = likeTimer;
+  }else{
+   boolDislike = false; 
+  }
+  if(key == 'd'){
+    boolLike = true;
+    oldLikeTimer = likeTimer;
+  }else{
+    boolLike = false;
+  } 
 }
 
 void topUI(){
@@ -37,13 +66,12 @@ void topUI(){
   if(timer <= 10){
     fill(235,87,87);
   }
-  /*
+  
   if(timer <= 0){
     timer = 0;
-    chatInactive = false;
   }
   text(timer, 1080/15,(115/2)+(textSize/3));
-  */
+  
 }
 
 void mainUI(){
@@ -54,27 +82,53 @@ void mainUI(){
   like = loadImage("like icon.png");
   PImage dislike;
   dislike = loadImage("dislike icon.png");
+  int profileX = 1080/2;
+  int profileY = 920;
+  
+  if(boolLike == true){
+    for(int i = 0; i<1080/2; i = i+1){
+      profileX = profileX+1;
+    }
+  }
+  if(boolDislike == true){
+    for(int i = 0; i<1080/2; i = i+1){
+      profileX = profileX-1;
+    }
+  }
+  
   
   imageMode(CENTER);
-  image(profile,1080/2,920);
-  likeDislike(like,1080-(1080/4),1920-(1920/15));
-  likeDislike(dislike,1080/4,1920-(1920/15));
+  image(profile,profileX,profileY);
+  likeDislike(like,1080-(1080/4),1920-(1920/15), boolLike);
+  likeDislike(dislike,1080/4,1920-(1920/15), boolDislike);
   
 
 }
 
-<<<<<<< HEAD
-=======
-void mainUI(){
->>>>>>> 52f3beaa46d32ff9180edb6350631639a760c891
 
-void likeDislike(PImage imageName,float x,float y, String activationKey){
+void likeDislike(PImage imageName,float x,float y, boolean pressed){
+  int across = 160;
+  int up = 160;
+  int across2 = 100;
+  int up2 = 100;
+  if(pressed == true){
+    across = across-across/4;
+    up = up-up/4;
+    across2 = across2-across2/4;
+    up2 = up2-up2/4;
+  }else{
+    across = 160;
+    up = 160;
+    across2 = 100;
+    up2 = 100;
+  }
+  
   ellipseMode(CENTER);
   fill(0,0,0,65);
-  ellipse(x+5, y+10,160,160);
+  ellipse(x+5, y+10,across,up);
   fill(255,255,255);
-  ellipse(x,y,160,160);
-  image(imageName,x,y);
+  ellipse(x,y,across,up);
+  image(imageName,x,y,across2,up2);
 }
 
 
@@ -82,7 +136,6 @@ void allChats(){
 
 }
 
-<<<<<<< HEAD
 
 void chatConcacts(String contanctName, String contactPhoto){
   
@@ -91,15 +144,4 @@ void chatConcacts(String contanctName, String contactPhoto){
 
 void chat(){
   
-=======
-void chatConcacts(){
-
->>>>>>> 52f3beaa46d32ff9180edb6350631639a760c891
-}
-void keyPressed(){
-  int keyIndex = -1;
-  if( key == 'c'){
-    chatInactive = false;
-    allChats();
-  }
 }
