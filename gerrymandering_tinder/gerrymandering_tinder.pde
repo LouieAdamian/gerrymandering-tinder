@@ -11,7 +11,7 @@ void topUI(){
 
 }
 
-Void mainUI(){
+void mainUI(){
 
 }
 
@@ -20,5 +20,5 @@ void allChats(){
 }
 
 void chatConcacts(){
-  
+
 }
