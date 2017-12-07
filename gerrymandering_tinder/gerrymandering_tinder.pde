@@ -1,6 +1,8 @@
 
 Boolean chatInactive = true;
 void setup(){
+  Data.addDisctict("NC 12", "nc12.png");
+  Data.addDisctict("FL 20", "")
   size(1080,1920);
   background(255,255,255);
 }
