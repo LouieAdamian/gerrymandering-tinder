@@ -6,6 +6,6 @@ public class Data{
 
 
   void addDisctict(String name,String photo){
-      Data.districts.add(new District(name, false, photo));
+      //Data.districts.add(new District(name, false, photo));
   }
 }

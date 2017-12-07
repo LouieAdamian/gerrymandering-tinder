@@ -1,18 +1,40 @@
-
 Boolean chatInactive = true;
 boolean boolLike = false;
 boolean boolDislike = false;
-int likeTimer = millis();
+boolean likeFunction = false;
+boolean dislikeFunction = false;
+boolean pullupMainUI = true;
+boolean pullupAllChatsUI = false;
+boolean pullupTopUI = true;
+boolean pullupChat = false;
+boolean likePass = false;
+boolean dislikePass = false;
+boolean switchPagePass = false;
+int timer;
+int likeTimer;
+int likeCounter;
+int dislikeCounter;
+int switchPageCounter;
 int oldLikeTimer = 0;
+int voteCount = likeCounter+dislikeCounter+switchPageCounter;
 void setup(){
   size(1080,1920);
   background(255,255,255);
 }
 
 void draw(){
+if(pullupMainUI == true){
 mainUI();
+}
+
+if(pullupAllChatsUI == true){
+  allChats();
+}
+if(pullupTopUI == true){
 topUI();
-if(likeTimer-oldLikeTimer >= 500){
+}
+likeTimer = millis();
+if(likeTimer-oldLikeTimer >= 50){
     boolLike = false;
     boolDislike = false;
     oldLikeTimer = likeTimer;
@@ -23,19 +45,25 @@ void keyPressed(){
   int keyIndex = -1;
   if( key == 'w'){
     chatInactive = false;
-    allChats();
+    switchPageCounter++;
   }
   if(key == 'a'){
+    dislikeCounter++;
     boolDislike = true;
+    dislikeFunction = true;
     oldLikeTimer = likeTimer;
   }else{
    boolDislike = false;
+   dislikeFunction = false;
   }
   if(key == 'd'){
+    likeCounter++;
     boolLike = true;
+    likeFunction = true;
     oldLikeTimer = likeTimer;
   }else{
     boolLike = false;
+    likeFunction = false;
   }
 }
 
@@ -46,12 +74,16 @@ void topUI(){
     activeInactive = "chat icon (inactive).png";
   }else{
     activeInactive = "chat icon (active).png";
+    pullupMainUI = false;
+    pullupAllChatsUI = true;
   }
   chatButton = loadImage(activeInactive);
   int textSize =  48;
+  if(voteCount >= 3){
   int m = millis();
   m = m/1000;
-  int timer = 30-m;
+  timer = 20-m;
+  }
 
 
   stroke(255);
@@ -83,16 +115,16 @@ void mainUI(){
   like = loadImage("like icon.png");
   PImage dislike;
   dislike = loadImage("dislike icon.png");
-<<<<<<< HEAD
+
   int profileX = 1080/2;
   int profileY = 920;
 
-  if(boolLike == true){
+  if(likeFunction == true){
     for(int i = 0; i<1080/2; i = i+1){
       profileX = profileX+1;
     }
   }
-  if(boolDislike == true){
+  if(dislikeFunction == true){
     for(int i = 0; i<1080/2; i = i+1){
       profileX = profileX-1;
     }
@@ -108,7 +140,7 @@ void mainUI(){
 }
 
 
-<<<<<<< HEAD
+
 void likeDislike(PImage imageName,float x,float y, boolean pressed){
   int across = 160;
   int up = 160;
@@ -136,7 +168,7 @@ void likeDislike(PImage imageName,float x,float y, boolean pressed){
 
 
 void allChats(){
-
+  background(246,247,251);
 }
 
 
@@ -150,11 +182,4 @@ void chat(){
 }
 void chatConcacts(){
 
-}
-void keyPressed(){
-  int keyIndex = -1;
-  if( key == 'c'){
-    chatInactive = false;
-    allChats();
-  }
 }
