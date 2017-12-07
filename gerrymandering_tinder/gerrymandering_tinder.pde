@@ -1,3 +1,4 @@
+
 Boolean chatInactive = true;
 void setup(){
   size(1080,1920);
@@ -22,8 +23,8 @@ void topUI(){
   int m = millis();
   m = m/1000;
   int timer = 30-m;
-  
-  
+
+
   stroke(255);
   fill(0,0,0,65);
   rect(-1,6,1082,115);
@@ -54,21 +55,17 @@ void mainUI(){
   like = loadImage("like icon.png");
   PImage dislike;
   dislike = loadImage("dislike icon.png");
-  
+
   imageMode(CENTER);
   image(profile,1080/2,920);
   likeDislike(like,1080-(1080/4),1920-(1920/15));
   likeDislike(dislike,1080/4,1920-(1920/15));
-  
+
 
 }
 
-<<<<<<< HEAD
-=======
-void mainUI(){
->>>>>>> 52f3beaa46d32ff9180edb6350631639a760c891
 
-void likeDislike(PImage imageName,float x,float y, String activationKey){
+void likeDislike(PImage imageName,float x,float y){
   ellipseMode(CENTER);
   fill(0,0,0,65);
   ellipse(x+5, y+10,160,160);
@@ -82,19 +79,17 @@ void allChats(){
 
 }
 
-<<<<<<< HEAD
 
 void chatConcacts(String contanctName, String contactPhoto){
-  
+
 }
 
 
 void chat(){
-  
-=======
+
+}
 void chatConcacts(){
 
->>>>>>> 52f3beaa46d32ff9180edb6350631639a760c891
 }
 void keyPressed(){
   int keyIndex = -1;
