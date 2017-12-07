@@ -1,3 +1,4 @@
+
 Boolean chatInactive = true;
 boolean boolLike = false;
 boolean boolDislike = false;
@@ -51,8 +52,8 @@ void topUI(){
   int m = millis();
   m = m/1000;
   int timer = 30-m;
-  
-  
+
+
   stroke(255);
   fill(0,0,0,65);
   rect(-1,6,1082,115);
@@ -82,6 +83,7 @@ void mainUI(){
   like = loadImage("like icon.png");
   PImage dislike;
   dislike = loadImage("dislike icon.png");
+<<<<<<< HEAD
   int profileX = 1080/2;
   int profileY = 920;
   
@@ -102,10 +104,19 @@ void mainUI(){
   likeDislike(like,1080-(1080/4),1920-(1920/15), boolLike);
   likeDislike(dislike,1080/4,1920-(1920/15), boolDislike);
   
+=======
+
+  imageMode(CENTER);
+  image(profile,1080/2,920);
+  likeDislike(like,1080-(1080/4),1920-(1920/15));
+  likeDislike(dislike,1080/4,1920-(1920/15));
+
+>>>>>>> 57a3ff017e441f4719c3fa59b5dfe2e97a303f87
 
 }
 
 
+<<<<<<< HEAD
 void likeDislike(PImage imageName,float x,float y, boolean pressed){
   int across = 160;
   int up = 160;
@@ -123,6 +134,9 @@ void likeDislike(PImage imageName,float x,float y, boolean pressed){
     up2 = 100;
   }
   
+=======
+void likeDislike(PImage imageName,float x,float y){
+>>>>>>> 57a3ff017e441f4719c3fa59b5dfe2e97a303f87
   ellipseMode(CENTER);
   fill(0,0,0,65);
   ellipse(x+5, y+10,across,up);
@@ -138,10 +152,25 @@ void allChats(){
 
 
 void chatConcacts(String contanctName, String contactPhoto){
-  
+
 }
 
 
 void chat(){
+<<<<<<< HEAD
   
 }
+=======
+
+}
+void chatConcacts(){
+
+}
+void keyPressed(){
+  int keyIndex = -1;
+  if( key == 'c'){
+    chatInactive = false;
+    allChats();
+  }
+}
+>>>>>>> 57a3ff017e441f4719c3fa59b5dfe2e97a303f87
