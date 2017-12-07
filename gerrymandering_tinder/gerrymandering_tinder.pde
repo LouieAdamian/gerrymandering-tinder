@@ -6,7 +6,7 @@ int likeTimer = millis();
 int oldLikeTimer = 0;
 void setup(){
   Data.addDisctict("NC 12", "nc12.png");
-  Data.addDisctict("FL 20", "")
+  Data.addDisctict("FL 20", "");
   size(1080,1920);
   background(255,255,255);
 }
@@ -106,39 +106,11 @@ void mainUI(){
   likeDislike(like,1080-(1080/4),1920-(1920/15), boolLike);
   likeDislike(dislike,1080/4,1920-(1920/15), boolDislike);
   
-=======
-
-  imageMode(CENTER);
-  image(profile,1080/2,920);
-  likeDislike(like,1080-(1080/4),1920-(1920/15));
-  likeDislike(dislike,1080/4,1920-(1920/15));
-
->>>>>>> 57a3ff017e441f4719c3fa59b5dfe2e97a303f87
-
 }
 
 
-<<<<<<< HEAD
-void likeDislike(PImage imageName,float x,float y, boolean pressed){
-  int across = 160;
-  int up = 160;
-  int across2 = 100;
-  int up2 = 100;
-  if(pressed == true){
-    across = across-across/4;
-    up = up-up/4;
-    across2 = across2-across2/4;
-    up2 = up2-up2/4;
-  }else{
-    across = 160;
-    up = 160;
-    across2 = 100;
-    up2 = 100;
-  }
-  
-=======
 void likeDislike(PImage imageName,float x,float y){
->>>>>>> 57a3ff017e441f4719c3fa59b5dfe2e97a303f87
+
   ellipseMode(CENTER);
   fill(0,0,0,65);
   ellipse(x+5, y+10,across,up);
@@ -159,10 +131,8 @@ void chatConcacts(String contanctName, String contactPhoto){
 
 
 void chat(){
-<<<<<<< HEAD
   
 }
-=======
 
 }
 void chatConcacts(){
@@ -175,4 +145,3 @@ void keyPressed(){
     allChats();
   }
 }
->>>>>>> 57a3ff017e441f4719c3fa59b5dfe2e97a303f87
