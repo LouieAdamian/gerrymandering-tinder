@@ -5,8 +5,6 @@ boolean boolDislike = false;
 int likeTimer = millis();
 int oldLikeTimer = 0;
 void setup(){
-  Data.addDisctict("NC 12", "nc12.png");
-  Data.addDisctict("FL 20", "");
   size(1080,1920);
   background(255,255,255);
 }
@@ -18,7 +16,7 @@ if(likeTimer-oldLikeTimer >= 500){
     boolLike = false;
     boolDislike = false;
     oldLikeTimer = likeTimer;
-    
+
   }
 }
 void keyPressed(){
@@ -31,14 +29,14 @@ void keyPressed(){
     boolDislike = true;
     oldLikeTimer = likeTimer;
   }else{
-   boolDislike = false; 
+   boolDislike = false;
   }
   if(key == 'd'){
     boolLike = true;
     oldLikeTimer = likeTimer;
   }else{
     boolLike = false;
-  } 
+  }
 }
 
 void topUI(){
@@ -69,12 +67,12 @@ void topUI(){
   if(timer <= 10){
     fill(235,87,87);
   }
-  
+
   if(timer <= 0){
     timer = 0;
   }
   text(timer, 1080/15,(115/2)+(textSize/3));
-  
+
 }
 
 void mainUI(){
@@ -88,7 +86,7 @@ void mainUI(){
 <<<<<<< HEAD
   int profileX = 1080/2;
   int profileY = 920;
-  
+
   if(boolLike == true){
     for(int i = 0; i<1080/2; i = i+1){
       profileX = profileX+1;
@@ -99,17 +97,34 @@ void mainUI(){
       profileX = profileX-1;
     }
   }
-  
-  
+
+
   imageMode(CENTER);
   image(profile,profileX,profileY);
   likeDislike(like,1080-(1080/4),1920-(1920/15), boolLike);
   likeDislike(dislike,1080/4,1920-(1920/15), boolDislike);
-  
+
+
 }
 
 
-void likeDislike(PImage imageName,float x,float y){
+<<<<<<< HEAD
+void likeDislike(PImage imageName,float x,float y, boolean pressed){
+  int across = 160;
+  int up = 160;
+  int across2 = 100;
+  int up2 = 100;
+  if(pressed == true){
+    across = across-across/4;
+    up = up-up/4;
+    across2 = across2-across2/4;
+    up2 = up2-up2/4;
+  }else{
+    across = 160;
+    up = 160;
+    across2 = 100;
+    up2 = 100;
+  }
 
   ellipseMode(CENTER);
   fill(0,0,0,65);
@@ -131,8 +146,6 @@ void chatConcacts(String contanctName, String contactPhoto){
 
 
 void chat(){
-  
-}
 
 }
 void chatConcacts(){
