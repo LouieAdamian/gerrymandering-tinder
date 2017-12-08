@@ -206,5 +206,5 @@ void chatConcacts(){
 
 }
 void populate(){
-       // addDisctict("NC 13", "profile.png", )
+        Data.addDisctict("NC 13", "profile.png", "Thanks I conver a highway and all the demporcratic cities in NC", "","");
 }
