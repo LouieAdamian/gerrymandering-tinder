@@ -1,17 +1,15 @@
-boolean chatInactive, boolike, likeFunction, dislikeFunction, pullupMainUI;
-boolean pullupChat, likePass, dislikePass, switchPagePass, pullupAllChatsUI;
-chatInactive = true;
-boolLike = false;
-boolDislike = false;
-likeFunction = false;
-dislikeFunction = false;
-pullupMainUI = true;
-pullupAllChatsUI = false;
-pullupTopUI = true;
-pullupChat = false;
-likePass = false;
-dislikePass = false;
-switchPagePass = false;
+boolean chatInactive = true;
+boolean boolLike = false;
+boolean boolDislike = false;
+boolean likeFunction = false;
+boolean dislikeFunction = false;
+boolean pullupMainUI = true;
+boolean pullupAllChatsUI= false;
+boolean pullupTopUI = true;
+boolean pullupChat = false;
+boolean likePass = false;
+boolean dislikePass = false;
+boolean switchPagePass = false;
 int timer, likeTimer, likeCounter, dislikeCounter, switchPageCounter;
 int oldLikeTimer = 0;
 int voteCount = 0;
@@ -183,58 +181,6 @@ void topUI(){
 
         }
 }
-void keyPressed(){
-        int keyIndex = -1;
-        if( key == 'w') {
-                chatInactive = false;
-                allChats();
-        }
-        if(key == 'a') {
-                boolDislike = true;
-                oldLikeTimer = likeTimer;
-        }else{
-                boolDislike = false;
-        }
-        if(key == 'd') {
-                boolLike = true;
-                oldLikeTimer = likeTimer;
-        }else{
-                boolLike = false;
-        }
-}
-void topUI(){
-        PImage chatButton;
-        String activeInactive;
-        if (chatInactive == true) {
-                activeInactive = "chat icon (inactive).png";
-        }else{
-                activeInactive = "chat icon (active).png";
-        }
-        chatButton = loadImage(activeInactive);
-        int textSize =  48;
-        int m = millis();
-        m = m/1000;
-        int timer = 30-m;
-
-
-        stroke(255);
-        fill(0,0,0,65);
-        rect(-1,6,1082,115);
-        stroke(255);
-        fill(255,255,255,255);
-        rect(0,0,1080,115);
-        imageMode(CENTER);
-        image(chatButton,1080-(1080/15),115/2);
-        textSize(textSize);
-        fill(0,0,0);
-        if(timer <= 10) {
-                fill(235,87,87);
-        }
-        if(timer <= 0) {
-                timer = 0;
-        }
-        text(timer, 1080/15,(115/2)+(textSize/3));
-}
 void mainUI(){
         background(246,247,251);
         PImage profile;
@@ -331,13 +277,6 @@ void chat(){
 }
 void chatConcacts(){
 
-}
-void keyPressed(){
-        int keyIndex = -1;
-        if( key == 'c') {
-                chatInactive = false;
-                allChats();
-        }
 }
 void populate(){
        // addDisctict("NC 13", "profile.png", )

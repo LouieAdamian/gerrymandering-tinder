@@ -1,5 +1,4 @@
-boolean chatInactive, boolike, likeFunction, dislikeFunction, pullupMainUI;
-boolean pullupChat, likePass, dislikePass, switchPagePass, pullupAllChatsUI;
+boolean chatInactive, boolike, likeFunction, dislikeFunction, pulllupMainUI, pullupChat, likePass, dislikePass, switchPagePass;
 chatInactive = true;
 boolLike = false;
 boolDislike = false;
@@ -87,6 +86,8 @@ void topUI(){
         }else{
                 timer = 12;
         }
+
+
         stroke(255);
         fill(0,0,0,65);
         rect(-1,6,1082,115);
@@ -100,6 +101,7 @@ void topUI(){
         if(timer <= 10) {
                 fill(235,87,87);
         }
+
         if(timer <= 0) {
                 timer = millis();
                 if(likeCounter > dislikeCounter && likeCounter > switchPageCounter) {
@@ -156,6 +158,8 @@ void topUI(){
                 m = m/1000;
                 timer = 20-m;
         }
+
+
         stroke(255);
         fill(0,0,0,65);
         rect(-1,6,1082,115);
@@ -169,6 +173,7 @@ void topUI(){
         if(timer <= 10) {
                 fill(235,87,87);
         }
+
         if(timer <= 0) {
                 timer = 0;
         }
@@ -202,6 +207,7 @@ void keyPressed(){
                 boolLike = false;
         }
 }
+
 void topUI(){
         PImage chatButton;
         String activeInactive;
@@ -230,11 +236,14 @@ void topUI(){
         if(timer <= 10) {
                 fill(235,87,87);
         }
+
         if(timer <= 0) {
                 timer = 0;
         }
         text(timer, 1080/15,(115/2)+(textSize/3));
+
 }
+
 void mainUI(){
         background(246,247,251);
         PImage profile;
@@ -258,6 +267,7 @@ void mainUI(){
                 }
         }
 
+
         imageMode(CENTER);
         image(profile,profileX,profileY);
         likeDislike(like,1080-(1080/4),1920-(1920/15), boolLike);
@@ -288,12 +298,14 @@ void likeDislike(PImage imageName,float x,float y, boolean pressed){
                 }
         }
 
+
         imageMode(CENTER);
         image(profile,profileX,profileY);
         likeDislike(like,1080-(1080/4),1920-(1920/15), boolLike);
         likeDislike(dislike,1080/4,1920-(1920/15), boolDislike);
 }
 void likeDislike(PImage imageName,float x,float y, boolean pressed){
+        >> >> >>> e36ca9659c2c3e71ff73e2fcddd22e71e478754d
         int across = 160;
         int up = 160;
         int across2 = 100;
@@ -318,18 +330,23 @@ void likeDislike(PImage imageName,float x,float y, boolean pressed){
         image(imageName,x,y,across2,up2);
 }
 
+
 void allChats(){
         background(246,247,251);
 }
+
 
 void chatConcacts(String contanctName, String contactPhoto){
 
 }
 
+
 void chat(){
 
 }
 void chatConcacts(){
+
+
 
 }
 void keyPressed(){
@@ -340,5 +357,5 @@ void keyPressed(){
         }
 }
 void populate(){
-       // addDisctict("NC 13", "profile.png", )
+  addDisctict("NC 13", "profile.png", )
 }
