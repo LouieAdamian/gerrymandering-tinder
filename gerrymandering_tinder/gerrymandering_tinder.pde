@@ -15,7 +15,7 @@ int timer, likeTimer, likeCounter, dislikeCounter, switchPageCounter;
 int oldLikeTimer = 0;
 int voteCount = 0;
 int timerReset = 0;
-int timerTime = 2;
+int timerTime = 12;
 void setup() {
   size(1080, 1920);
   background(255, 255, 255);
@@ -95,10 +95,12 @@ void topUI() {
   fill(255, 255, 255, 255);
   rect(0, 0, 1080, 115);
   imageMode(CENTER);
-  image(chatButton, 1080-(1080/15), 115/2);
+  image(chatButton, 1080-(1080/9), 115/2);
   textSize(textSize);
   fill(0, 0, 0);
   text(timer, 1080/15, (115/2)+(textSize/3));
+  fill(196, 196, 196);
+  text(switchPageCounter, (1080-1080/15), (115/2)+(50));
   int keyIndex = -1;
 }
 void mainUI() {
@@ -133,8 +135,6 @@ void mainUI() {
   text(likeCounter, (1080-1080/4)+80, (1920-1920/15)+(100));
   fill(255, 0, 0);
   text(dislikeCounter, (1080/4)+80, (1920-1920/15)+(100));
-  fill(255, 0, 0);
-  text(switchPageCounter, (1080-1080/15), (115/2)+(100));
 }
 void likeDislike(PImage imageName, float x, float y, boolean pressed) {
   int across = 160;
@@ -174,6 +174,19 @@ void chatConcacts() {
 }
 void voting() {
   voteCount = likeCounter+dislikeCounter+switchPageCounter;
+    if (likeCounter >= 99) {
+   likeCounter = 99;
+   }
+   if (dislikeCounter >= 99) {
+   dislikeCounter = 99;
+   }
+   if (switchPageCounter >= 99) {
+   switchPageCounter = 99;
+   }
+   if (voteCount <= 3 || timer <= 0) {
+   timerReset = millis();
+   timerReset = timerReset/1000;
+   }
   if (voteCount >= 3) {
     int m = millis(); 
     m = m/1000;
@@ -187,6 +200,18 @@ void voting() {
   }
   if (timer <= 0) {
     timer = millis();
+    if (switchPageCounter == likeCounter || switchPageCounter == dislikeCounter || dislikeCounter == likeCounter) {
+      float random = random(1, 3);
+      if (random <= 1) {
+        likeCounter++;
+      }
+      if (random <= 2 && random > 1) {
+        dislikeCounter++;
+      }
+      if (random <= 3 && random > 2) {
+        switchPageCounter++;
+      }
+    }
     if (likeCounter > dislikeCounter && likeCounter > switchPageCounter) {
       boolLike = true;
       likeFunction = true;
@@ -206,23 +231,8 @@ void voting() {
     if (switchPageCounter > likeCounter && switchPageCounter > dislikeCounter) {
       chatInactive = !chatInactive;
     }
-    if (switchPageCounter == likeCounter || switchPageCounter == dislikeCounter || dislikeCounter == likeCounter) {
-      float random = random(1, 3);
-      if (random <= 1) {
-        likeCounter++;
-      }
-      if (random <= 2 && random > 1) {
-        dislikeCounter++;
-      }
-      if (random <= 3 && random > 2) {
-        switchPageCounter++;
-      }
-    }
   }
-  if (voteCount <= 3 || timer <= 0) {
-    timerReset = millis();
-    timerReset = timerReset/1000;
-  }
+   
 }
 void populate() {
   // addDisctict("NC 13", "profile.png", )
