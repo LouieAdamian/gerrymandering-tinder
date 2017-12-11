@@ -13,7 +13,6 @@ boolean switchPagePass = false;
 boolean boolTimerReset = false;
 int timer, likeTimer, likeCounter, dislikeCounter, switchPageCounter;
 int oldLikeTimer = 0;
-int voteCount = 0;
 int timerReset = 0;
 int timerTime = 12;
 void setup() {
@@ -87,7 +86,6 @@ void topUI() {
   }
   chatButton = loadImage(activeInactive);
   int textSize =  48;
-  voting();
   stroke(255);
   fill(0, 0, 0, 65);
   rect(-1, 6, 1082, 115);
@@ -116,11 +114,22 @@ void mainUI() {
   int profileY = 920;
 
   if (likeFunction == true) {
+    boolLike = true;
+    oldLikeTimer = likeTimer;
+    likeCounter = 0;
+    dislikeCounter = 0;
+    switchPageCounter = 0;
+
     for (int i = 0; i<1080/2; i = i+1) {
       profileX = profileX+1;
     }
   }
   if (dislikeFunction == true) {
+    boolDislike = true;
+    oldLikeTimer = likeTimer;
+    dislikeCounter = 0;
+    likeCounter = 0;
+    switchPageCounter = 0;
     for (int i = 0; i<1080/2; i = i+1) {
       profileX = profileX-1;
     }
@@ -135,6 +144,7 @@ void mainUI() {
   text(likeCounter, (1080-1080/4)+80, (1920-1920/15)+(100));
   fill(255, 0, 0);
   text(dislikeCounter, (1080/4)+80, (1920-1920/15)+(100));
+  voting(likeCounter, dislikeCounter, switchPageCounter, likeFunction, dislikeFunction, chatInactive);
 }
 void likeDislike(PImage imageName, float x, float y, boolean pressed) {
   int across = 160;
@@ -172,21 +182,23 @@ void chat() {
 }
 void chatConcacts() {
 }
-void voting() {
-  voteCount = likeCounter+dislikeCounter+switchPageCounter;
-    if (likeCounter >= 99) {
-   likeCounter = 99;
-   }
-   if (dislikeCounter >= 99) {
-   dislikeCounter = 99;
-   }
-   if (switchPageCounter >= 99) {
-   switchPageCounter = 99;
-   }
-   if (voteCount <= 3 || timer <= 0) {
-   timerReset = millis();
-   timerReset = timerReset/1000;
-   }
+void voting(int voteCase1, int voteCase2, int voteCase3, int voteCase4, boolean voteCase1Bool, boolean voteCase2Bool, boolean voteCase3Bool, boolean voteCase4Bool) {
+}
+void voting(int voteCase1, int voteCase2, int voteCase3, boolean voteCase1Bool, boolean voteCase2Bool, boolean voteCase3Bool) {
+  int voteCount = voteCase1+voteCase2+voteCase3;
+  if (voteCase1 >= 99) {
+    voteCase1 = 99;
+  }
+  if (voteCase2 >= 99) {
+    voteCase2 = 99;
+  }
+  if (voteCase3 >= 99) {
+    voteCase3 = 99;
+  }
+  if (voteCount <= 3 || timer <= 0) {
+    timerReset = millis();
+    timerReset = timerReset/1000;
+  }
   if (voteCount >= 3) {
     int m = millis(); 
     m = m/1000;
@@ -200,39 +212,28 @@ void voting() {
   }
   if (timer <= 0) {
     timer = millis();
-    if (switchPageCounter == likeCounter || switchPageCounter == dislikeCounter || dislikeCounter == likeCounter) {
+    if (voteCase3 == voteCase1 || voteCase3 == voteCase2 || voteCase2 == voteCase1) {
       float random = random(1, 3);
       if (random <= 1) {
-        likeCounter++;
+        voteCase1++;
       }
       if (random <= 2 && random > 1) {
-        dislikeCounter++;
+        voteCase2++;
       }
       if (random <= 3 && random > 2) {
-        switchPageCounter++;
+        voteCase3++;
       }
     }
-    if (likeCounter > dislikeCounter && likeCounter > switchPageCounter) {
-      boolLike = true;
-      likeFunction = true;
-      oldLikeTimer = likeTimer;
-      likeCounter = 0;
-      dislikeCounter = 0;
-      switchPageCounter = 0;
+    if (voteCase1 > voteCase2 && voteCase1 > voteCase3) {
+      voteCase1Bool = !voteCase1Bool;
     }
-    if (dislikeCounter > likeCounter && dislikeCounter > switchPageCounter) {
-      boolDislike = true;
-      dislikeFunction = true;
-      oldLikeTimer = likeTimer;
-      dislikeCounter = 0;
-      likeCounter = 0;
-      switchPageCounter = 0;
+    if (voteCase2 > voteCase1 && voteCase2 > voteCase3) {
+      voteCase2Bool = !voteCase2Bool;
     }
     if (switchPageCounter > likeCounter && switchPageCounter > dislikeCounter) {
-      chatInactive = !chatInactive;
+      voteCase3Bool = !voteCase3Bool;
     }
   }
-   
 }
 void populate() {
   // addDisctict("NC 13", "profile.png", )
