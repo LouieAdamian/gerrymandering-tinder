@@ -190,7 +190,7 @@ void voting() {
    timerReset = timerReset/1000;
    }
   if (voteCount >= 3) {
-    int m = millis(); 
+    int m = millis();
     m = m/1000;
     m = m-timerReset;
     timer = timerTime-m;
@@ -234,7 +234,7 @@ void voting() {
       chatInactive = !chatInactive;
     }
   }
-   
+
 }
 void populate() {
   // addDisctict("NC 13", "profile.png", )
