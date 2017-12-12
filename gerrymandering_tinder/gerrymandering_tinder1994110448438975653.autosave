@@ -243,7 +243,7 @@ void ResolveVote()
 }
 
 
-/*void voting(int voteCase1, int voteCase2, int voteCase3, void voteCase1Function, void voteCase2Function, boolean voteCase3Bool) {
+void voting(int voteCase1, int voteCase2, int voteCase3, void voteCase1Function, void voteCase2Function, boolean voteCase3Bool) {
         // Set the max to 99, purely for formatting reasons.
         if (voteCase1 >= 99) {
                 voteCase1 = 99;
@@ -312,7 +312,7 @@ void ResolveVote()
                         resetTimer();
                 }
         }
-}*/
+}
 
 void populate() {
         // addDisctict("NC 13", "profile.png", )
