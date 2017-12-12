@@ -168,17 +168,17 @@ void likeDislike(PImage imageName, float x, float y, boolean pressed) {
         image(imageName, x, y, across2, up2);
 }
 
-void allChats()
 
-void chatConcacts(String contanctName, String contactPhoto) {
-}
 
 void chat() {
   background(246, 247, 251);
 
 }
 void chatConcacts() {
+
 }
+
+
 void voting(int voteCase1, int voteCase2, int voteCase3, int voteCase4, boolean voteCase1Bool, boolean voteCase2Bool, boolean voteCase3Bool, boolean voteCase4Bool) {
 
 }

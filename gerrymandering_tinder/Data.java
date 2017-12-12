@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 public class Data{
+  String[] questions ={"",","};
   public static ArrayList<Object> districts = new ArrayList<Object>();
 
 

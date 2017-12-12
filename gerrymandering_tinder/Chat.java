@@ -1,11 +1,11 @@
 
 public class Chat{
-public String options, word;
+  void chatUI(){
+    
+  }
+  void questionUI(){
 
-public Chat(String options, String word){
+  }
 
-  this.word = word;
-  this.options = options;
-}
 
 }
