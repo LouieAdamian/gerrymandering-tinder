@@ -14,11 +14,10 @@ void setup() {
         size(1080, 1920);
         background(255, 255, 255);
 
-      //  pullupMainUI();
+        pullupMainUI();
 }
 
 void draw() {
-  pullupMainUI();
   keyPressed();
   if (boolTimerReset == true) {
       timerReset = millis();
@@ -47,9 +46,6 @@ void resetTimer(){
 
 void keyPressed() {
         int keyIndex = -1;
-        if (!keyPressed) {
-          return;
-        }
         if ( key == 'w') {
                 //chatInactive = false;
                 switchPageCounter++;
@@ -81,7 +77,7 @@ void topUI() {
         String activeInactive;
         if (chatInactive == true) {
                 activeInactive = "chat icon (inactive).png";
-                //pullupMainUI();
+                pullupMainUI();
         } else {
                 activeInactive = "chat icon (active).png";
                 //pullupChat
@@ -104,7 +100,7 @@ void topUI() {
         int keyIndex = -1;
 }
 void mainUI() {
-        background(246, 247, 251);
+      //  background(246, 247, 251);
         PImage profile;
         profile = loadImage("profile.png");
         PImage like;
