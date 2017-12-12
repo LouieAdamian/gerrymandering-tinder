@@ -14,13 +14,10 @@ void setup() {
 }
 
 void draw() {
-  pullupMainUI();
+//  pullupMainUI();
+
   keyPressed();
-  if (boolTimerReset == true) {
-    timerReset = millis();
-    timerReset = timerReset/1000;
-    boolTimerReset = false;
-    }
+
 
         likeTimer = millis();
         if (likeTimer-oldLikeTimer >= 50) {
@@ -38,7 +35,6 @@ void pullupMainUI(/* arguments */) {
 void resetTimer(){
   timerReset = millis();
   timerReset = timerReset/1000;
-  boolTimerReset = false;
 }
 
 void keyPressed() {
