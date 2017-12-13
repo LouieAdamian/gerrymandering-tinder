@@ -18,12 +18,8 @@ void draw() {
 //  pullupMainUI();
 
   keyPressed();
-<<<<<<< HEAD
   HandleTimer();
-=======
-
-
->>>>>>> 17b0e136ccfbd02527a07ceb4ad2f660db966d65
+  
         likeTimer = millis();
         if (likeTimer-oldLikeTimer >= 50) {
           boolLike = false;
