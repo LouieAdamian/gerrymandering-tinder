@@ -10,6 +10,7 @@ int profileY;
 boolean isOnMainPage = true;
 int timer = timerTime;
 void setup() {
+  
   size(1080, 1920);
   background(255, 255, 255);
 }
