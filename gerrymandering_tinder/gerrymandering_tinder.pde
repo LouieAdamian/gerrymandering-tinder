@@ -23,12 +23,12 @@ void draw() {
   keyPressed();
   HandleTimer();
 
-        likeTimer = millis();
-        if (likeTimer-oldLikeTimer >= 50) {
-          boolLike = false;
-          boolDislike = false;
-          oldLikeTimer = likeTimer;
-        }
+  likeTimer = millis();
+  if (likeTimer-oldLikeTimer >= 50) {
+    boolLike = false;
+    boolDislike = false;
+    oldLikeTimer = likeTimer;
+  }
 }
 
 void pullupMainUI() {
