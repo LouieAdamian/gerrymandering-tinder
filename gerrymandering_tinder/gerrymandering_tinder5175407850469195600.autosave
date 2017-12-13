@@ -9,7 +9,8 @@ int profileX;
 int profileY;
 boolean isOnMainPage = true;
 int timer = timerTime;
-int i;
+  int i;
+
 void setup() {
   profileX = 1080/2;
   profileY = 920;
@@ -149,15 +150,20 @@ void DoLike() {
 
   boolLike = true;
   oldLikeTimer = likeTimer;
+if(boolLike = true){
+  while (i<1080/4) {
+    profileX++;
+    i++;
+  }
+}
 }
 void DoDislike() {
   isOnMainPage = true;
   boolDislike = true;
   oldLikeTimer = likeTimer;
-for(int i = 0; i < 1080/4; i++){
-profileX--;
-
-}
+  for (int i = 0; i<1080/4; i = i+1) {
+    profileX = profileX + 1;
+  }
 }
 void likeDislike(PImage imageName, float x, float y, boolean pressed) {
   int across = 160;
