@@ -48,45 +48,53 @@ void keyPressed() {
   }
   if ( key == 'w') {
     if (isOnMainPage) {
+      if(likeCounter < 99){
       likeCounter++;
+    }
     } else {
+      if(switchPageCounter < 99){
       switchPageCounter++;
+    }
     }
   }
   if (key == 'a') {
     if (isOnMainPage) {
+      if(dislikeCounter < 99){
       dislikeCounter++;
+    }
     } else {
+      if(dialogue1Counter < 99){
       dialogue1Counter++;
+    }
     }
   }
   if (key == 'd')
   {
     if (isOnMainPage) {
+if(likeCounter < 99){
       likeCounter++;
+    }
     } else {
+      if(dialogue1Counter < 99){
       dialogue3Counter++;
+    }
     }
   }
   if (key == 's') {
     if (isOnMainPage) {
+      if(dislikeCounter < 99){
       dislikeCounter++;
+    }
     } else {
+      if(dialogue2Counter < 99){
       dialogue2Counter++;
+    }
     }
   }
 }
 void topUI() {
   PImage chatButton;
-  String activeInactive;
-  if (chatInactive == true) {
-    activeInactive = "chat icon (inactive).png";
-    //pullupMainUI();
-  } else {
-    activeInactive = "chat icon (active).png";
-    //pullupChat
-  }
-  chatButton = loadImage(activeInactive);
+  chatButton = loadImage("chat icon (inactive).png");
   int textSize =  48;
   stroke(255);
   fill(0, 0, 0, 65);
@@ -250,14 +258,8 @@ void ResolveVote()
   timer = timerTime;
 }
 void chatTopUI() {
-  if(chatInactive = true){
-  activeInactive = "chat icon (inactive).png";
-  //pullupMainUI();
-} else {
-  activeInactive = "chat icon (active).png";
-  //pullupChat
-}
-chatButton = loadImage(activeInactive);
+  PImage chatButton;
+  chatButton = loadImage("chat icon (active).png");
 int textSize =  48;
 stroke(255);
 fill(0, 0, 0, 65);
