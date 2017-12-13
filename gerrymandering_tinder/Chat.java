@@ -17,8 +17,7 @@ public class Chat{
       bottomLeftFillet = 20;
       bottomRightFillet = 80;
     }
-    rect(410, 292 * messageCount + 242, );
-    messageCount++;
+    rect(410, 292*messageCount+242, )
   }
 
   public void questionUI(){
