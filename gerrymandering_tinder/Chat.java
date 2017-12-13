@@ -1,5 +1,5 @@
-include java.awt.font;
-include java.awt.fontMetrics;
+import java.awt.font;
+import java.awt.fontMetrics;
 
 public class Chat {
   private int messageCount;

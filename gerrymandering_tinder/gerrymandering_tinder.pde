@@ -19,7 +19,7 @@ void draw() {
 
   keyPressed();
   HandleTimer();
-  
+
         likeTimer = millis();
         if (likeTimer-oldLikeTimer >= 50) {
           boolLike = false;
