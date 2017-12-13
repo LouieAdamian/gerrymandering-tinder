@@ -1,10 +1,7 @@
-include java.awt.font;
-include java.awt.fontMetrics;
-
-public class Chat {
-  private int messageCount;
+public class Chat{
+  int messageCount;
   public void chatUI(){
-    qsuestionUI();
+    questionUI();
 
   }
   public void chatBubble(String chatMessage, boolean received){
