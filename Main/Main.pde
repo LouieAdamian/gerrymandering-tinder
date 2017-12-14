@@ -1,7 +1,8 @@
 boolean chatInactive = true; // activates swtich to chat page
 boolean boolLike = false; // makes like button smaller
 boolean boolDislike = false; // makes dislike button smaller
-int  likeTimer, likeCounter, dislikeCounter, switchPageCounter, dialogue1Counter, dialogue2Counter, dialogue3Counter, lastMatch;
+int  likeTimer, likeCounter, dislikeCounter, switchPageCounter, lastMatch;
+public static int  dialogue1Counter, dialogue2Counter, dialogue3Counter;
 int oldLikeTimer = 0;
 int timerReset = 0;
 int timerTime = 12;
@@ -11,12 +12,6 @@ boolean isOnMainPage = true;
 int timer = timerTime;
 int i;
 void setup() {
-<<<<<<< HEAD:gerrymandering_tinder/gerrymandering_tinder.pde
-  profileX = 1080/2;
-  profileY = 920;
-=======
-  
->>>>>>> 7b6b63dae8f69b576b016a4e2517b51dbb310674:Main/Main.pde
   size(1080, 1920);
   background(255, 255, 255);
 }

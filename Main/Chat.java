@@ -36,9 +36,9 @@ public class Chat {
     p.rect(26,1437,1020,460,80);
     p.line(26, 1741, 1046, 1741);
     p.line(26, 1600, 1046, 1600);
-    p.text(main.dialog1Counter, 800, 1477);
-    p.text(dialog2Counter, 800, 1616);
-    p.text(dialog3Counter, 800, 1770);
+    p.text(Main.dialogue1Counter, 800, 1477);
+    p.text(Main.dialogue2Counter, 800, 1616);
+    p.text(Main.dialogue3Counter, 800, 1770);
     p.text(Data.questions[0], 78, 1477);
     p.text(Data.questions[1], 78, 1616);
     p.text(Data.questions[2], 78, 1770);
