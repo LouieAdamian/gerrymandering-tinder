@@ -2,11 +2,9 @@ boolean chatInactive = true; // activates swtich to chat page
 boolean boolLike = false; // makes like button smaller
 boolean boolDislike = false; // makes dislike button smaller
 int  likeTimer, likeCounter, dislikeCounter, switchPageCounter, lastMatch;
-public static int  dialogue1Counter, dialogue2Counter, dialogue3Counter;
-int oldLikeTimer = 0;
-int timerReset = 0;
-int timerTime = 12;
+int oldLikeTimer = 0, timerReset = 0, timerTime = 12;
 int profileX;
+public static int dialogue1Counter, dialogue2Counter, dialogue3Counter;
 int profileY;
 boolean isOnMainPage = true;
 int timer = timerTime;
@@ -14,6 +12,7 @@ int i;
 void setup() {
   size(1080, 1920);
   background(255, 255, 255);
+  //Chat chat =  new Chat();
 }
 
 void draw() {
@@ -114,7 +113,7 @@ void topUI() {
   }
   text(timer, 1080/15, (115/2)+(textSize/3));
   fill(196, 196, 196);
-  text(switchPageCounter, (1080-1080/15), (115/2)+(50));
+  //text(switchPageCounter, (1080-1080/15), (115/2)+(50));
   int keyIndex = -1;
 }
 void mainUI() {
@@ -183,11 +182,10 @@ void likeDislike(PImage imageName, float x, float y, boolean pressed) {
   image(imageName, x, y, across2, up2);
 }
 
-
-
 void chat() {
   background(246, 247, 251);
   chatTopUI();
+ // chat.questionUI();
 }
 
 
@@ -213,7 +211,6 @@ void HandleTimer()
     ResolveVote();
   }
 }
-
 
 void ResolveVote()
 {
@@ -242,9 +239,6 @@ void ResolveVote()
       isOnMainPage = true;
     }
   }
-  // TODO
-
-  // Reset the votes.
   likeCounter = 0;
   dislikeCounter = 0;
   switchPageCounter = 0;
@@ -278,77 +272,10 @@ int keyIndex = -1;
 
 }
 
-/*void voting(int voteCase1, int voteCase2, int voteCase3, void voteCase1Function, void voteCase2Function, boolean voteCase3Bool) {
- // Set the max to 99, purely for formatting reasons.
- if (voteCase1 >= 99) {
- voteCase1 = 99;
- }
- if (voteCase2 >= 99) {
- voteCase2 = 99;
- }
- if (voteCase3 >= 99) {
- voteCase3 = 99;
- }
-
- // On the main page, this equals likes + dislikes.
- int voteCount = voteCase1+voteCase2+voteCase3;
-
- // Make sure the timer doesn't start counting down until there are at least 3 votes.
- if (voteCount <= 3 || timer <= 0) {
- // Pause the timer.
- timerReset = millis();
- timerReset = timerReset/1000;
- }
- else if (voteCount > 3) {
- // Count down.
- int m = millis();
- m = m/1000;
- m = m-timerReset;
- timer = timerTime-m;
- }
- else {
- // Reset the timer.
- timer = timerTime;
- }
-
- // When countdown is 10 or under, turn the timer red.
- if (timer <= 10) {
- fill(235, 87, 87);
- }
- // At 0, execute the function with the most votes.
- if (timer <= 0) {
- timer = millis();
- // Handle tie-breaking.a
- if (voteCase3 == voteCase1 || voteCase3 == voteCase2 || voteCase2 == voteCase1) {
- float random = random(1, 3);
- if (random <= 1) {
- voteCase1++;
- }
- if (random <= 2 && random > 1) {
- voteCase2++;
- }
- if (random <= 3 && random > 2) {
- voteCase3++;
- }
- }
- // First vote wins.
- if (voteCase1 > voteCase2 && voteCase1 > voteCase3) {
-
- resetTimer();
- }
- // Second vote wins.
- if (voteCase2 > voteCase1 && voteCase2 > voteCase3) {
- voteCase2Bool = !voteCase2Bool;
- resetTimer();
- }
- // Third vote wins.
- if (switchPageCounter > likeCounter && switchPageCounter > dislikeCounter) {
- voteCase3Bool = !voteCase3Bool;
- resetTimer();
- }
- }
- }*/
-
 void populate() {
-  // addDisctict("NC 13", "profile.png", );
+  Data.addDisctict("NC 13", "profile.png", "hey lil mamma lemme wisper in your ear","you're thiccc","How U dooin?");
+  //Data.addDisctict("FL 22", "",);
+  //Data.addDisctict("PA ??", );
+
+
 }
