@@ -2,10 +2,19 @@ boolean chatInactive = true; // activates swtich to chat page
 boolean boolLike = false; // makes like button smaller
 boolean boolDislike = false; // makes dislike button smaller
 int  likeTimer, likeCounter, dislikeCounter, switchPageCounter, lastMatch;
+<<<<<<< HEAD
 int oldLikeTimer = 0, timerReset = 0, timerTime = 12;
 int profileX;
 public static int dialogue1Counter, dialogue2Counter, dialogue3Counter;
 int profileY;
+=======
+public static int  dialogue1Counter, dialogue2Counter, dialogue3Counter;
+int oldLikeTimer = 0;
+int timerReset = 0;
+int timerTime = 12;
+int profileX = 1080/2;
+int profileY = 920;
+>>>>>>> 595a327ebc381ccaaac6e95b9780b9d92a9fe3d4
 boolean isOnMainPage = true;
 int timer = timerTime;
 int i;
