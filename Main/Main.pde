@@ -13,19 +13,28 @@ int timer = timerTime;
 int i, currDistrict;
 Chat chat =  new Chat(this);
 
-void setup() {
+static int DIALOG_VOTE_MSG0 = 0;
+static int DIALOG_VOTE_MSG1 = 1;
+static int DIALOG_VOTE_NONE = 2;
+int dialogVoteResult = DIALOG_VOTE_NONE;
+
+void setup() { 
   size(1080, 1920);
   background(255, 255, 255);
+  // populate districts
   populate();
+  // choose a district
+  currDistrict = round(random(0, 2));
 }
 
 void draw() {
   if (isOnMainPage == true) {
     pullupMainUI();
+    dialogVoteResult  = DIALOG_VOTE_NONE;
   } else {
     chat();
   }
-  keyPressed();
+
   HandleTimer();
 
   likeTimer = millis();
@@ -51,49 +60,49 @@ void keyPressed() {
   if (!keyPressed) {
     return;
   }
-  if ( key == 'w') {
+  if ( key == 'w' || key == 'W') {
     if (isOnMainPage) {
-      if(likeCounter < 99){
-      likeCounter++;
-    }
+      if (likeCounter < 99) {
+        likeCounter++;
+      }
     } else {
-      if(switchPageCounter < 99){
-      switchPageCounter++;
-    }
+      if (switchPageCounter < 99) {
+        switchPageCounter++;
+      }
     }
   }
-  if (key == 'a') {
+  if (key == 'a' || key == 'A') {
     if (isOnMainPage) {
-      if(dislikeCounter < 99){
-      dislikeCounter++;
-    }
+      if (dislikeCounter < 99) {
+        dislikeCounter++;
+      }
     } else {
-      if(dialogue1Counter < 99){
-      dialogue1Counter++;
-    }
+      if (dialogue1Counter < 99) {
+        dialogue1Counter++;
+      }
     }
   }
-  if (key == 'd')
+  if (key == 'd' || key == 'D')
   {
     if (isOnMainPage) {
-if(likeCounter < 99){
-      likeCounter++;
-    }
+      if (likeCounter < 99) {
+        likeCounter++;
+      }
     } else {
-      if(dialogue1Counter < 99){
-      dialogue3Counter++;
-    }
+      if (dialogue1Counter < 99) {
+        // dialogue3Counter++;
+      }
     }
   }
   if (key == 's') {
     if (isOnMainPage) {
-      if(dislikeCounter < 99){
-      dislikeCounter++;
-    }
+      if (dislikeCounter < 99) {
+        dislikeCounter++;
+      }
     } else {
-      if(dialogue2Counter < 99){
-      dialogue2Counter++;
-    }
+      if (dialogue2Counter < 99) {
+        dialogue2Counter++;
+      }
     }
   }
 }
@@ -120,8 +129,8 @@ void topUI() {
   //text(switchPageCounter, (1080-1080/15), (115/2)+(50));
   int keyIndex = -1;
 }
+
 void mainUI() {
-  currDistrict = round(random(0,2));
   background(246, 247, 251);
   PImage profile;
   String path = Data.districts.get(currDistrict).photo;
@@ -131,9 +140,6 @@ void mainUI() {
   like = loadImage("like icon.png");
   PImage dislike;
   dislike = loadImage("dislike icon.png");
-
-
-
 
   imageMode(CENTER);
   image(profile, profileX, profileY);
@@ -145,9 +151,10 @@ void mainUI() {
   fill(255, 0, 0);
   text(dislikeCounter, (1080/4)+80, (1920-1920/15)+(100));
 
-  HandleTimer();
+ // HandleTimer();
   //      voting(likeCounter, dislikeCounter, switchPageCounter, likeFunction, dislikeFunction, chatInactive);
 }
+
 void DoLike() {
   isOnMainPage = false;
   // Go to the chat page! TODO
@@ -155,15 +162,19 @@ void DoLike() {
   boolLike = true;
   oldLikeTimer = likeTimer;
 }
+
 void DoDislike() {
   isOnMainPage = true;
   boolDislike = true;
   oldLikeTimer = likeTimer;
-for(int i = 0; i < 1080/4; i++){
-profileX--;
+  // change district
+  int tempDistrict;
+  do{
+    tempDistrict = round(random(0, 2));
+  }while(tempDistrict == currDistrict);
+  currDistrict = tempDistrict;
+}
 
-}
-}
 void likeDislike(PImage imageName, float x, float y, boolean pressed) {
   int across = 160;
   int up = 160;
@@ -193,12 +204,22 @@ void chat() {
   background(246, 247, 251);
   chatTopUI();
   chat.questionUI();
+  println(dialogVoteResult);
+  if(dialogVoteResult == DIALOG_VOTE_MSG0){
+    message(0);
+    //fill(255,0,0); // DWDEBUG
+    //rect(200,200,400,400); // DWDEBUG
+  }else if(dialogVoteResult == DIALOG_VOTE_MSG1){
+    message(1);
+    //fill(0,255,0);// DWDEBUG
+    //rect(200,200,400,400);// DWDEBUG
+  }
 }
 
 
 void HandleTimer()
 {
-  int totalVotes = likeCounter + dislikeCounter + switchPageCounter + dialogue1Counter + dialogue2Counter + dialogue3Counter;
+  int totalVotes = likeCounter + dislikeCounter + switchPageCounter + dialogue1Counter + dialogue2Counter;
 
   if (totalVotes <= 3)
   {
@@ -221,35 +242,40 @@ void HandleTimer()
 
 void ResolveVote()
 {
-  int totalVotes = likeCounter + dislikeCounter + switchPageCounter + dialogue1Counter + dialogue2Counter + dialogue3Counter;
+  int totalVotes = likeCounter + dislikeCounter + switchPageCounter + dialogue1Counter + dialogue2Counter;
 
   if (totalVotes <= 3)
   {
     return;
   }
-  int[] votes = new int[] {switchPageCounter, dialogue1Counter, dialogue2Counter, dialogue3Counter, likeCounter, dislikeCounter};
+  int[] votes = new int[] {switchPageCounter, dialogue1Counter, dialogue2Counter, likeCounter, dislikeCounter};
   // Get the maximum vote.
   int max = votes[0];
   for (int i = 1; i < votes.length; i++) {
     if (votes[i] > max) {
       max = votes[i];
     }
-
-    if (max == likeCounter) {
-      DoLike();
-      println("liked");
-    } else if (max == dislikeCounter) {
-      DoDislike();
-      println("disliked");
-    }
-    if (max == switchPageCounter) {
-      isOnMainPage = true;
-    } if (max == dialogue1Counter){
-
-    } if (max == dialogue2Counter){
-
-    }
   }
+  if (max == likeCounter) {
+    DoLike();
+    println("liked");
+  } else if (max == dislikeCounter) {
+    DoDislike();
+    println("disliked");
+  }
+  if (max == switchPageCounter) {
+    println("switchPageCounter");
+    isOnMainPage = true;
+  } 
+  if (max == dialogue1Counter) {
+    println("dialogue1Counter");
+    dialogVoteResult = DIALOG_VOTE_MSG0;
+  } 
+  if (max == dialogue2Counter) {
+    println("dialogue2Counter");
+    dialogVoteResult = DIALOG_VOTE_MSG1;
+  }
+
   likeCounter = 0;
   dislikeCounter = 0;
   switchPageCounter = 0;
@@ -257,37 +283,39 @@ void ResolveVote()
   dialogue2Counter = 0;
   timer = timerTime;
 }
+
 void chatTopUI() {
   PImage chatButton;
   chatButton = loadImage("chat icon (active).png");
-int textSize =  48;
-stroke(255);
-fill(0, 0, 0, 65);
-rect(-1, 6, 1082, 115);
-stroke(255);
-fill(255, 255, 255, 255);
-rect(0, 0, 1080, 115);
-imageMode(CENTER);
-image(chatButton, 1080-(1080/9), 115/2);
-textSize(textSize);
-fill(0, 0, 0);
-if (timer <= 10)
-{
-  fill(235, 87, 87);
-}
-text(timer, 1080/15, (115/2)+(textSize/3));
-text(Data.districts.get(currDistrict).name, 150, 75);
-fill(196, 196, 196);
-text(switchPageCounter, (1080-1080/15), (115/2)+(50));
-int keyIndex = -1;
-
+  int textSize =  48;
+  stroke(255);
+  fill(0, 0, 0, 65);
+  rect(-1, 6, 1082, 115);
+  stroke(255);
+  fill(255, 255, 255, 255);
+  rect(0, 0, 1080, 115);
+  imageMode(CENTER);
+  image(chatButton, 1080-(1080/9), 115/2);
+  textSize(textSize);
+  fill(0, 0, 0);
+  if (timer <= 10)
+  {
+    fill(235, 87, 87);
+  }
+  text(timer, 1080/15, (115/2)+(textSize/3));
+  text(Data.districts.get(currDistrict).name, 150, 75);
+  fill(196, 196, 196);
+  text(switchPageCounter, (1080-1080/15), (115/2)+(50));
+  int keyIndex = -1;
 }
 
 void populate() {
-  Data.addDisctict("NC 13", "profile.png", "Democrats, people living in major cities","I am a democratic majority distict");
-  Data.addDisctict("MD 3", "profile.png", "","you're thiccc");
-  Data.addDisctict("NC 13", "profile.png", "hey lil mamma lemme wisper in your ear","you're thiccc");
+  Data.addDistrict("NC 12", "profileNC12.png", "Democrats, people living in major cities", "I am a democratic majority distict");
+  Data.addDistrict("MD 3", "profileMD3.png", "", "you're thiccc");
+  Data.addDistrict("PA 7", "profilePA7.png", "hey lil mamma lemme wisper in your ear", "you're thiccc");
+}
 
-
-
+void message(int message) {
+  chat.chatBubble(Data.questions[message], false);
+  chat.chatBubble(Data.districts.get(currDistrict).conversation.get(Data.questions[message]), true);
 }
