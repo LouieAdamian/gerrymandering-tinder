@@ -310,12 +310,12 @@ void chatTopUI() {
 }
 
 void populate() {
-  Data.addDisctict("NC 13", "profile.png", "Democrats, people living in major cities","I am a democratic majority distict");
-  Data.addDisctict("MD 3", "profile.png", "Democrats, and people living in major cities","I am a democratic majority district");
-  Data.addDisctict("PA 7", "profile.png", "Republicans, and people living in major cities","I am a republican majority district");
-
-
-
+  //Data.addDisctict("NC 13", "profile.png", "Democrats, people living in major cities","I am a democratic majority distict");
+  //Data.addDisctict("MD 3", "profile.png", "Democrats, and people living in major cities","I am a democratic majority district");
+  //Data.addDisctict("PA 7", "profile.png", "Republicans, and people living in major cities","I am a republican majority district");
+  Data.addDistrict("NC 12", "NC 12.png", "Democrats, people living in major cities", "I am a democratic majority distict");
+  Data.addDistrict("MD 3", "MD 3.png", "Democrats, and people living in major cities", "I am a democratic majority district");
+  Data.addDistrict("PA 7", "PA 7.png", "Republicans, and people living in major cities", "I am a republican majority district");
 }
 
 void message(int message) {
