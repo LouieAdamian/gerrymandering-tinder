@@ -2,26 +2,21 @@ boolean chatInactive = true; // activates swtich to chat page
 boolean boolLike = false; // makes like button smaller
 boolean boolDislike = false; // makes dislike button smaller
 int  likeTimer, likeCounter, dislikeCounter, switchPageCounter, lastMatch;
-<<<<<<< HEAD
-int oldLikeTimer = 0, timerReset = 0, timerTime = 12;
-int profileX;
-public static int dialogue1Counter, dialogue2Counter, dialogue3Counter;
-int profileY;
-=======
-public static int  dialogue1Counter, dialogue2Counter, dialogue3Counter;
+public static int  dialogue1Counter, dialogue2Counter;
 int oldLikeTimer = 0;
 int timerReset = 0;
-int timerTime = 12;
+int timerTime = 2;
 int profileX = 1080/2;
 int profileY = 920;
->>>>>>> 595a327ebc381ccaaac6e95b9780b9d92a9fe3d4
 boolean isOnMainPage = true;
 int timer = timerTime;
-int i;
+int i, currDistrict;
+Chat chat =  new Chat(this);
+
 void setup() {
   size(1080, 1920);
   background(255, 255, 255);
-  //Chat chat =  new Chat();
+  populate();
 }
 
 void draw() {
@@ -126,9 +121,12 @@ void topUI() {
   int keyIndex = -1;
 }
 void mainUI() {
+  currDistrict = round(random(0,2));
   background(246, 247, 251);
   PImage profile;
-  profile = loadImage("profile.png");
+  String path = Data.districts.get(currDistrict).photo;
+  //String path = Data.districs[0].photo;
+  profile = loadImage(path);
   PImage like;
   like = loadImage("like icon.png");
   PImage dislike;
@@ -194,7 +192,7 @@ void likeDislike(PImage imageName, float x, float y, boolean pressed) {
 void chat() {
   background(246, 247, 251);
   chatTopUI();
- // chat.questionUI();
+  chat.questionUI();
 }
 
 
@@ -246,6 +244,10 @@ void ResolveVote()
     }
     if (max == switchPageCounter) {
       isOnMainPage = true;
+    } if (max == dialogue1Counter){
+
+    } if (max == dialogue2Counter){
+
     }
   }
   likeCounter = 0;
@@ -253,7 +255,6 @@ void ResolveVote()
   switchPageCounter = 0;
   dialogue1Counter = 0;
   dialogue2Counter = 0;
-  dialogue3Counter = 0;
   timer = timerTime;
 }
 void chatTopUI() {
@@ -275,6 +276,7 @@ if (timer <= 10)
   fill(235, 87, 87);
 }
 text(timer, 1080/15, (115/2)+(textSize/3));
+text(Data.districts.get(currDistrict).name, 150, 75);
 fill(196, 196, 196);
 text(switchPageCounter, (1080-1080/15), (115/2)+(50));
 int keyIndex = -1;
@@ -282,9 +284,10 @@ int keyIndex = -1;
 }
 
 void populate() {
-  Data.addDisctict("NC 13", "profile.png", "hey lil mamma lemme wisper in your ear","you're thiccc","How U dooin?");
-  //Data.addDisctict("FL 22", "",);
-  //Data.addDisctict("PA ??", );
+  Data.addDisctict("NC 13", "profile.png", "Democrats, people living in major cities","I am a democratic majority distict");
+  Data.addDisctict("MD 3", "profile.png", "","you're thiccc");
+  Data.addDisctict("NC 13", "profile.png", "hey lil mamma lemme wisper in your ear","you're thiccc");
+
 
 
 }

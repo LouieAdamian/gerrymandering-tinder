@@ -33,15 +33,14 @@ public class Chat {
   public void questionUI(){
     PImage sendIcon;
     sendIcon = p.loadImage("/icons/sendArrow.png");
-    p.rect(26,1437,1020,460,80);
-    p.line(26, 1741, 1046, 1741);
-    p.line(26, 1600, 1046, 1600);
-    p.text(Main.dialogue1Counter, 800, 1477);
-    p.text(Main.dialogue2Counter, 800, 1616);
-    p.text(Main.dialogue3Counter, 800, 1770);
+    p.fill(217,217,217);
+    p.rect(26,1547,1020,350,80);
+    p.fill(255,255,255);
+    p.line(26, 1722, 1046, 1722);
+    p.text(Main.dialogue1Counter, 800, 1571);
+    p.text(Main.dialogue2Counter, 800, 1736);
     p.text(Data.questions[0], 78, 1477);
     p.text(Data.questions[1], 78, 1616);
-    p.text(Data.questions[2], 78, 1770);
-    p.image(sendIcon, 906, 1787);
+    //p.image(sendIcon, 906, 1787);
   }
 }
