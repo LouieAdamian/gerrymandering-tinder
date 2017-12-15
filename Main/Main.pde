@@ -18,7 +18,7 @@ static int DIALOG_VOTE_MSG1 = 1;
 static int DIALOG_VOTE_NONE = 2;
 int dialogVoteResult = DIALOG_VOTE_NONE;
 
-void setup() { 
+void setup() {
   size(1080, 1920);
   background(255, 255, 255);
   // populate districts
@@ -266,11 +266,11 @@ void ResolveVote()
   if (max == switchPageCounter) {
     println("switchPageCounter");
     isOnMainPage = true;
-  } 
+  }
   if (max == dialogue1Counter) {
     println("dialogue1Counter");
     dialogVoteResult = DIALOG_VOTE_MSG0;
-  } 
+  }
   if (max == dialogue2Counter) {
     println("dialogue2Counter");
     dialogVoteResult = DIALOG_VOTE_MSG1;
@@ -310,9 +310,12 @@ void chatTopUI() {
 }
 
 void populate() {
-  Data.addDistrict("NC 12", "profileNC12.png", "Democrats, people living in major cities", "I am a democratic majority distict");
-  Data.addDistrict("MD 3", "profileMD3.png", "", "you're thiccc");
-  Data.addDistrict("PA 7", "profilePA7.png", "hey lil mamma lemme wisper in your ear", "you're thiccc");
+  Data.addDisctict("NC 13", "profile.png", "Democrats, people living in major cities","I am a democratic majority distict");
+  Data.addDisctict("MD 3", "profile.png", "Democrats, and people living in major cities","I am a democratic majority district");
+  Data.addDisctict("PA 7", "profile.png", "Republicans, and people living in major cities","I am a republican majority district");
+
+
+
 }
 
 void message(int message) {
