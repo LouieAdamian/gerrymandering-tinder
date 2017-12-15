@@ -285,8 +285,8 @@ int keyIndex = -1;
 
 void populate() {
   Data.addDisctict("NC 13", "profile.png", "Democrats, people living in major cities","I am a democratic majority distict");
-  Data.addDisctict("MD 3", "profile.png", "","you're thiccc");
-  Data.addDisctict("NC 13", "profile.png", "hey lil mamma lemme wisper in your ear","you're thiccc");
+  Data.addDisctict("MD 3", "profile.png", "Democrats, and people living in major cities","I am a democratic majority district");
+  Data.addDisctict("PA 7", "profile.png", "Republicans, and people living in major cities","I am a republican majority district");
 
 
 
